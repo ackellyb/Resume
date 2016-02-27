@@ -3,7 +3,7 @@
 
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
-  \PassOptionsToClass{\CurrentOption}{article}%
+	\PassOptionsToClass{\CurrentOption}{article}%
 }
 \ProcessOptions\relax
 \LoadClass{article}
@@ -29,17 +29,17 @@
 \definecolor{blue}{HTML}{6CE0F1}
 
 \ifdefined\@cv@print
-  \colorlet{green}{gray}
-  \colorlet{orange}{gray}
-  \colorlet{purple}{gray}
-  \colorlet{brown}{gray}
-  \colorlet{red}{gray}
-  \colorlet{blue}{gray}
-  \colorlet{fillheader}{white}
-  \colorlet{header}{gray}
+\colorlet{green}{gray}
+\colorlet{orange}{gray}
+\colorlet{purple}{gray}
+\colorlet{brown}{gray}
+\colorlet{red}{gray}
+\colorlet{blue}{gray}
+\colorlet{fillheader}{white}
+\colorlet{header}{gray}
 \else
-  \colorlet{fillheader}{gray}
-  \colorlet{header}{white}
+\colorlet{fillheader}{gray}
+\colorlet{header}{white}
 \fi
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
@@ -67,25 +67,25 @@
 \RequirePackage{tikz}
 
 \newcommand{\rolefont}{%
-  \fontsize{14pt}{24pt}\selectfont%
-  \thinfont%
-  \color{white}%
+	\fontsize{14pt}{24pt}\selectfont%
+	\thinfont%
+	\color{white}%
 }
 
 \newcommand{\header}[3]{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
-    \node [anchor=center] (name) at (box) {%
-      \fontsize{40pt}{72pt}\color{header}%
-      {\thinfont #1}{\bodyfont  #2}
-    };
-    \node [anchor=north] at (name.south) {%
-      \fontsize{14pt}{24pt}\color{header}%
-      \thinfont #3%
-    };
-  \end{tikzpicture}
-  \vspace{2cm}
-  \vspace{-2\parskip}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
+		\node [anchor=center] (name) at (box) {%
+			\fontsize{40pt}{72pt}\color{header}%
+			{\thinfont #1}{\bodyfont  #2}
+		};
+		\node [anchor=north] at (name.south) {%
+			\fontsize{14pt}{24pt}\color{header}%
+			\thinfont #3%
+		};
+	\end{tikzpicture}
+	\vspace{2cm}
+	\vspace{-2\parskip}
 }
 
 
@@ -96,31 +96,31 @@
 
 \newcounter{colorCounter}
 \def\@sectioncolor#1#2#3{%
-  {%
-    \color{%
-      \ifcase\value{colorCounter}%
-        blue\or%
-        red\or%
-        orange\or%
-        green\or%
-        purple\or%
-        brown\else%
-        headercolor\fi%
-    } #1#2#3%
-  }%
-  \stepcounter{colorCounter}%
-}
-
+	{%
+		\color{%
+			\ifcase\value{colorCounter}%
+				blue\or%
+				red\or%
+				orange\or%
+				green\or%
+				purple\or%
+				brown\else%
+				headercolor\fi%
+			} #1#2#3%
+		}%
+		\stepcounter{colorCounter}%
+	}
+	
 \renewcommand{\section}[1]{
-  {%
-    \LARGE\headingfont\color{headercolor}%
-    \@sectioncolor #1%
-  }
+	{%
+		\LARGE\headingfont\color{headercolor}%
+		\@sectioncolor #1%
+	}
 }
 
 \pagestyle{empty}
-
-
+	
+	
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
@@ -129,26 +129,26 @@
 \setlength{\tabcolsep}{0pt}
 \newenvironment{sectionlist}{%
 	\setlength\LTright{11.5cm}
-  \begin{longtable}{@{\extracolsep{\fill}}ll}
-}{%
-  \end{longtable}
+	\begin{longtable}{@{\extracolsep{\fill}}ll}
+		}{% 
+	\end{longtable}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  \parbox[t]{13.8cm}{%
-    \textbf{#2}%
-    \hfill%
-    {\footnotesize\addfontfeature{Color=gray} #1}\\%
-    \textbf{#3}\\%
-    #4\vspace{1.5\parsep}%
-  }\\}
-
+	\parbox[t]{13.8cm}{%
+		\textbf{#2}%
+		\hfill%
+		{\footnotesize\addfontfeature{Color=gray} #1}\\%
+		\textbf{#3}\\%
+		#4\vspace{1.5\parsep}%
+		}\\}
+	
 \newcommand{\misc}[2]{%
-    \parbox[t]{13.8cm}{%
-        \textbf{#1}%
-        \hfill%
-        {\footnotesize\addfontfeature{Color=gray} #2}%
-    }\\
+	\parbox[t]{13.8cm}{%
+		\textbf{#1}%
+		\hfill%
+		{\footnotesize\addfontfeature{Color=gray} #2}%
+		}\\
 }
 %%%%%%%%%%%%%%
 % Side block %
@@ -158,18 +158,18 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-  \let\oldsection\section
-  \renewcommand{\section}[1]{
-    \par\vspace{\parsep}{\Large\headingfont\color{headercolor} ##1}
-  }
-  \begin{textblock}{4.5}(1.0, 3.85)
-  \begin{flushright}
-  \obeycr
-}{%
-  \restorecr
-  \end{flushright}
-  \end{textblock}
-  \let\section\oldsection
+	\let\oldsection\section
+	\renewcommand{\section}[1]{
+		\par\vspace{\parsep}{\Large\headingfont\color{headercolor} ##1}
+	}
+	\begin{textblock}{4.5}(1.0, 3.85)
+		\begin{flushright}
+			\obeycr
+			}{%
+			\restorecr
+		\end{flushright}
+	\end{textblock}
+	\let\section\oldsection
 }
 
 %%%%%%%%%%%%%%%%
