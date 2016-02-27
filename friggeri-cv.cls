@@ -112,18 +112,10 @@
 }
 
 \renewcommand{\section}[1]{
-  \par\vspace{\parskip}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
   }
-  \par\vspace{\parskip}
-}
-
-\renewcommand{\subsection}[2]{
-  \par\vspace{.5\parskip}%
-  \Large\headingfont\color{headercolor} #2%
-  \par\vspace{.25\parskip}%
 }
 
 \pagestyle{empty}
@@ -132,11 +124,14 @@
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
+\RequirePackage{longtable}
+
 \setlength{\tabcolsep}{0pt}
-\newenvironment{entrylist}{%
-  \begin{tabular*}{11.5cm}{@{\extracolsep{\fill}}ll}
+\newenvironment{sectionlist}{%
+	\setlength\LTright{11.5cm}
+  \begin{longtable}{@{\extracolsep{\fill}}ll}
 }{%
-  \end{tabular*}
+  \end{longtable}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
@@ -145,26 +140,16 @@
     \hfill%
     {\footnotesize\addfontfeature{Color=gray} #1}\\%
     \textbf{#3}\\%
-    #4\vspace{\parsep}%
+    #4\vspace{1.5\parsep}%
   }\\}
 
-\newcommand{\short}[2]{%
+\newcommand{\misc}[2]{%
     \parbox[t]{13.8cm}{%
         \textbf{#1}%
         \hfill%
         {\footnotesize\addfontfeature{Color=gray} #2}%
     }\\
 }
-
-\newcommand{\course}[3]{%
-    \parbox[t]{12cm}{%
-	\textbf{#1}%
-	:
-	\emph{#2}\\
-	#3\vspace{\parsep}%
-    }\\	
-}
-
 %%%%%%%%%%%%%%
 % Side block %
 %%%%%%%%%%%%%%
@@ -175,7 +160,7 @@
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+    \par\vspace{\parsep}{\Large\headingfont\color{headercolor} ##1}
   }
   \begin{textblock}{4.5}(1.0, 3.85)
   \begin{flushright}
@@ -192,8 +177,6 @@
 %%%%%%%%%%%%%%%%
 
 \RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
-
-
 
 %%%%%%%%%%%%%%%%
 % Other tweaks %
