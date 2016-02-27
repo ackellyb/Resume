@@ -74,7 +74,7 @@
 
 \newcommand{\header}[3]{%
 	\begin{tikzpicture}[remember picture,overlay]
-		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
+		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2cm] (box) at (current page.north){};
 		\node [anchor=center] (name) at (box) {%
 			\fontsize{40pt}{72pt}\color{header}%
 			{\thinfont #1}{\bodyfont  #2}
@@ -84,7 +84,7 @@
 			\thinfont #3%
 		};
 	\end{tikzpicture}
-	\vspace{2cm}
+	\vspace{0.75cm}
 	\vspace{-2\parskip}
 }
 
@@ -113,8 +113,9 @@
 	
 \renewcommand{\section}[1]{
 	{%
-		\LARGE\headingfont\color{headercolor}%
+		\large\headingfont\color{headercolor}%
 		\@sectioncolor #1%
+		\vspace{-1\parskip}
 	}
 }
 
@@ -143,6 +144,14 @@
 		#4\vspace{1.5\parsep}%
 		}\\}
 	
+\newcommand{\education}[3]{%
+	\parbox[t]{13.8cm}{%
+		\textbf{#2}%
+		\hfill%
+		{\footnotesize\addfontfeature{Color=gray} #1}\\%
+		\textbf{#3}\\%
+	}\\}
+	
 \newcommand{\misc}[2]{%
 	\parbox[t]{13.8cm}{%
 		\textbf{#1}%
@@ -156,11 +165,11 @@
 
 \RequirePackage[absolute,overlay]{textpos}
 \setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
+\setlength{\TPVertModule}{0.67cm}
 \newenvironment{aside}{%
 	\let\oldsection\section
 	\renewcommand{\section}[1]{
-		\par\vspace{\parsep}{\Large\headingfont\color{headercolor} ##1}
+		\par\vspace{\parsep}{\large\headingfont\color{headercolor} ##1}
 	}
 	\begin{textblock}{4.5}(1.0, 3.85)
 		\begin{flushright}
