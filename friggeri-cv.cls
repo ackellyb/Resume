@@ -149,7 +149,7 @@
 		\textbf{#2}%
 		\hfill%
 		{\footnotesize\addfontfeature{Color=gray} #1}\\%
-		\textbf{#3}\\%
+		#3\\%
 	}\\}
 	
 \newcommand{\misc}[2]{%
