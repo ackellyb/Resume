@@ -1,18 +1,22 @@
- \ProvidesClass{friggeri-cv}[2012/04/30 CV class]
-\NeedsTeXFormat{LaTeX2e}
-
-\DeclareOption*{%
-	\PassOptionsToClass{\CurrentOption}{article}%
-}
-\ProcessOptions\relax
+ \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{friggeri-cv}
 \LoadClass{article}
 
+\RequirePackage{xcolor}
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\RequirePackage{tikz}
+\RequirePackage{fontawesome}
+\RequirePackage{parskip}
+\RequirePackage{longtable}
+\RequirePackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2cm,nohead,nofoot]{geometry}
+\RequirePackage{hyperref}
+
+\pagestyle{empty}
 
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
-
-\RequirePackage{xcolor}
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{black}{RGB}{0,0,0}
@@ -37,9 +41,6 @@
 % Fonts %
 %%%%%%%%%
 
-\RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
-
 \newfontfamily\bodyfont[]{Helvetica Neue}
 \newfontfamily\thinfont[]{Helvetica Neue Light}
 \newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
@@ -51,23 +52,26 @@
 % Header %
 %%%%%%%%%%
 
-\RequirePackage{tikz}
-
-\newcommand{\rolefont}{%
-	\fontsize{14pt}{24pt}\selectfont%
-	\thinfont%
-	\color{white}%
+\newcommand{\rolefont}{
+	\fontsize{14pt}{16pt}\selectfont
+	\thinfont
+	\color{white}
 }
 
-\newcommand{\header}[3]{%
+\newcommand{\header}[5]{
 	\begin{tikzpicture}[remember picture,overlay]
-		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=1.8cm] (box) at (current page.north){};
-		\node [anchor=center] (name) at (box) {%
-			\fontsize{30pt}{72pt}\color{header}%
-			{\thinfont #1}{\bodyfont  #2}
+		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2.5cm] (box) at (current page.north){};
+		\node [anchor=center, align=center] (name) at (box) {
+			\fontsize{30pt}{36pt}\color{header}
+			\thinfont #1 \bodyfont #2 
+			\\
+			\fontsize{10pt}{12pt}\color{header}
+			\thinfont \faEnvelopeO  \hspace{0.25em} #3 | 
+			\href{https://github.com/#5}{\faGithubSquare   \hspace{0.25em} #4} | 
+			\href{https://www.linkedin.com/in/#4}{\faLinkedinSquare  \hspace{0.25em} #5}
 		};
 	\end{tikzpicture}
-	\vspace{0.75cm}
+	\vspace{0.5cm}
 	\vspace{-2\parskip}
 }
 
@@ -75,97 +79,58 @@
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
-\RequirePackage{parskip}
 
 \newcounter{colorCounter}
-\def\@sectioncolor#1#2#3{%
-	{%
-		\color{%
-			\ifcase\value{colorCounter}%
-				blue\or%
-				red\or%
-				orange\or%
-				green\or%
-				purple\or%
-				brown\else%
-				headercolor\fi%
+\def\@sectioncolor#1#2#3{
+	{
+		\color{
+			\ifcase\value{colorCounter}
+				blue\or
+				red\or
+				orange\or
+				green\or
+				purple\or
+				brown\else
+				headercolor\fi
 			} #1#2#3%
 		}%
 		\stepcounter{colorCounter}%
 	}
 	
 \renewcommand{\section}[1]{
-	{%
-		\large\headingfont\color{headercolor}%
-		\@sectioncolor #1%
+	{
+		\large\headingfont\color{headercolor}
+		\@sectioncolor #1
 		\vspace{-1\parskip}
 	}
 }
-
-\pagestyle{empty}
 	
 	
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
-\RequirePackage{longtable}
 
 \setlength{\tabcolsep}{0pt}
-\newenvironment{sectionlist}{%
+\newenvironment{sectionlist}{
 	\setlength\LTright{11.5cm}
-	\begin{longtable}{@{\extracolsep{\fill}}ll}
-		}{% 
+	\begin{longtable}{@{\extracolsep{\fill}}ll}}{
 	\end{longtable}
 }
+
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
-	\parbox[t]{14.3cm}{%
-		\textbf{#2}%
-		\hfill%
-		{\footnotesize\addfontfeature{Color=gray} #1}\\%
-		\textbf{#3}\\%
-		#4\vspace{1.5\parsep}%
+\newcommand{\entry}[4]{
+	\parbox[t]{\textwidth}{
+		\textbf{#2}
+		\hfill
+		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		\textbf{#3}\\
+		#4\vspace{1.5\parsep}
 		}\\}
 	
-\newcommand{\education}[3]{%
-	\parbox[t]{14.3cm}{%
-		\textbf{#2}%
-		\hfill%
-		{\footnotesize\addfontfeature{Color=gray} #1}\\%
-		#3\\%
+\newcommand{\education}[3]{
+	\parbox[t]{\textwidth}{
+		\textbf{#2}
+		\hfill
+		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		#3\\
 	}\\}
-	
-%%%%%%%%%%%%%%
-% Side block %
-%%%%%%%%%%%%%%
-
-\RequirePackage[absolute,overlay]{textpos}
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{0.62cm}
-\newenvironment{aside}{%
-	\let\oldsection\section
-	\renewcommand{\section}[1]{
-		\par\vspace{\parsep}{\large\headingfont\color{headercolor} ##1}
-	}
-	\begin{textblock}{3.75}(1.0, 3.85)
-		\begin{flushright}
-			\obeycr
-			}{%
-			\restorecr
-		\end{flushright}
-	\end{textblock}
-	\let\section\oldsection
-}
-
-%%%%%%%%%%%%%%%%
-% Bibliography %
-%%%%%%%%%%%%%%%%
-
-\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
-
-%%%%%%%%%%%%%%%%
-% Other tweaks %
-%%%%%%%%%%%%%%%%
-
-\RequirePackage[left=5.6cm,top=1.8cm,right=1.5cm,bottom=2cm,nohead,nofoot]{geometry}
-\RequirePackage{hyperref}
