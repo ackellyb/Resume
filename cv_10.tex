@@ -13,39 +13,12 @@
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
-% Important notes:
-% This template needs to be compiled with XeLaTeX and the bibliography, if used,
-% needs to be compiled with biber rather than bibtex.
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[]{friggeri-cv} % Add 'print' as an option into the square bracket to remove colors from this template for printing
-
+\documentclass{friggeri-cv} 
 \begin{document}
 
-\header{Aaron}{ Kelly-Barker} % Your name and current job title/field
-
-
-%----------------------------------------------------------------------------------------
-%	SIDEBAR SECTION
-%----------------------------------------------------------------------------------------
-
-\begin{aside} % In the aside, each new line forces a line break
-	\section{Contact}
-	1140 County Road 11, 
-	Picton, Ontario,
-	K0K2T0 Canada
-	~
-	613-919-3701
-	~
-	\href{mailto:aaron.kelly.barker@gmail.com}{aaronkellybarker@gmail.com}
-	\href{ca.linkedin.com/in/ackellyb/}{ca.linkedin.com/in/ackellyb}
-	\href{https://github.com/ackellyb}{github.com/ackellyb}
-	\section{Programming}
-	Java, Python, C\#,
-	Powershell, Bash, 
-	C++, Scala, HTML
-\end{aside}
+\header{Aaron}{Kelly-Barker}{aaron.kelly.barker@gmail.com}{ackellyb}{ackellyb}
 
 %----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE SECTION
@@ -56,14 +29,24 @@
 \begin{sectionlist}
 	%------------------------------------------------
 	\entry
+	{Aug. 2016--Present}
+	{GREENLIGHT ESSENTIALS}
+	{Developer, Software}
+	{\emph {Kitchener, Canada}\\
+		\begin{itemize}
+			\item Built solutions to support human-driven analysis of real-world data. Created build artifact indexer, which indexed and served up artifact locations, decreasing build times
+			\item Creating plugin for Atlassian Stash to allow searching of Pull Requests in repositories, dramatically reducing developer time
+		\end{itemize}
+	}
+	%------------------------------------------------
+	\entry
 	{Sep. 2014--Apr. 2015}
 	{PALANTIR}
-	{Palo Alto, USA}
-	{\emph{Internal Tools Developer} \\
+	{Internal Tools Software Developer}
+	{\emph {Palo Alto, USA} \\
 		\begin{itemize}
-			\item Created a plugin for Atlassian Stash for searching Pull Requests (PR), which was needed as Stash had no way to filter PRs and repositories would often have hundreds of PRs
-			\item Created the framework for a build artifact indexer. Build artifacts could be located in several places and finding them slowed build times. The indexer would save the correct location, and provide it when needed, cutting build times
-			\item Contributed to the open-sourcing of internal tooling, such as Gitsemver on Palantir's Github
+			\item Built solutions to support human-driven analysis of real-world data. Created build artifact indexer, which indexed and served up artifact locations, decreasing build times
+			\item Creating plugin for Atlassian Stash to allow searching of Pull Requests in repositories, dramatically reducing developer time
 		\end{itemize}
 	}
 	
@@ -71,54 +54,26 @@
 	\entry
 	{Jan. 2014--Apr. 2014}
 	{WORK MARKET INC.}
-	{New York City, USA}
-	{\emph{Core Architecture Software Developer } \\
+	{Core Architecture Software Developer }
+	{\emph {New York City, USA}\\
 		\begin{itemize}
-			\item Created a forum for Work Market users to provide feedback. Created the entire process, from database calls and back-end functionality, to front end design.
-			\item Built a service to allow Work Market to advertise work on Indeed.com, to help advertise Work Market's services to a different market
-			\item Maintained a near 100\% Unit and Integration test coverage for all code created, to ensure stable code  
+			\item Engaged Work Market users by creating a forum for feedback. Built entire process, from back-end functionality, to front end design
+			\item Built a service to allow Work Market to publish postings on Indeed.com, bringing Work Market's services to a new audience and expanding market reach
 		\end{itemize}
 	}
 	
 	%------------------------------------------------
 	\entry
 	{May 2013--Aug. 2013}
-	{CANADIAN IMPERIAL BANK OF COMMERCE}
-	{Toronto, Canada}
-	{\emph{Fixed Income Analytics Developer} \\
+	{CIBC}
+	{Software Developer}
+	{\emph {Toronto, Canada} \\
 		\begin{itemize}
-			\item Automated build and deployment for a large application, condensing a complex and error-prone process into a single command, bringing down release time and failure rate
-			\item Created an application to generate the large amount of documentation needed for every release, cutting down time spent by the team on releases.
-			\item Designed front-end pages to streams of data, so the data could be visually validated as correct.
+			\item Automated build and deployment for a large application, condensed a complex and error-prone process into a single command, bringing down release time and failure rate
+			\item Created an application to generate documentation needed for every release,\\dramatically cutting down time spent by the team on releases
 		\end{itemize}
 	}
 	
-	%------------------------------------------------
-	\entry
-	{Sep. 2012--Dec. 2012}
-	{LEYSIN AMERICAN SCHOOL}
-	{Leysin, Switzerland}
-	{\emph{IT Support Technician} \\
-		\begin{itemize}
-			\item Provided computer support for upwards of 150 users, consisting of "Have you tried turning it off and on again?" 
-			\item Co-led research into rare and troubling computer issues
-			\item Collected metrics throughout term on interdepartmental bottlenecks, and presented my findings along with potential solutions 
-		\end{itemize}
-	}
-	
-	%------------------------------------------------
-	\entry
-	{Jan. 2012--Apr. 2012}
-	{GROUPTHINQ SOLUTIONS}
-	{Toronto, Canada}
-	{\emph{Application Developer} \\
-		\begin{itemize}
-			\item Worked as the sole developer on an instant task collaboration client, named Q
-			\item Implemented email parsing, allowing Q to perform actions based on the content of an email it receives 	
-			\item Extended the in-client search to allow Boolean logic searching
-			\item Spearheaded major refactoring and optimization, to make source code manageable 
-		\end{itemize}
-	}
 \end{sectionlist}
 
 
@@ -126,8 +81,9 @@
 %----------------------------------------------------------------------------------------
 %	VOLUNTEER SECTION
 %----------------------------------------------------------------------------------------
+\vspace{-2.5\parskip}
+\section{Volunteer Experience}
 
-\section{Volunteer Work}
 
 \begin{sectionlist}
 	
@@ -135,90 +91,31 @@
 	\entry
 	{Apr. 2015--Aug. 2015}
 	{GLOW CENTRE FOR SEXUAL AND GENDER DIVERSITY}
-	{Waterloo, Canada}
-	{\emph{Social Media and Marketing Director} \\
+	{Social Media and Marketing Director}
+	{\emph{Waterloo, Canada} \\
 		\begin{itemize}
 			\item Managed the Glow social media presence on Twitter, Facebook and Instagram
-			\item Created and ran marketing campaigns to sell out tickets to our pride 
+			\item Created and ran marketing campaigns that exceeded sales and engagement goals  
 		\end{itemize}
 	}
-	
-	%------------------------------------------------
-	\entry
-	{Sep. 2011--Aug. 2014}
-	{GLOW CENTRE FOR SEXUAL AND GENDER DIVERSITY}
-	{Waterloo, Canada}
-	{\emph{General Service Volunteer} \\
-		\begin{itemize}
-			\item Kept office hours for 2 hours every week, introduced new users to the service
-			\item Ran social events for general public
-		\end{itemize}
-	}
-	
-	%------------------------------------------------
-	\entry
-	{May 2012-- May 2013}
-	{FEDERATION OF STUDENTS}
-	{Waterloo, Canada}
-	{\emph{Student Technology Advisory Committee Student At-Large} \\
-		\begin{itemize}
-			\item Voted by the Federation of Student executives to represent the student body at Student Technology Advisory Committee meetings
-			\item Advised on technology issues faced by the school
-		\end{itemize}
-	}
-	
-	%------------------------------------------------
-	\entry
-	{Sep. 2012--Dec. 2012}
-	{LEYSIN AMERICAN SCHOOL}
-	{Leysin, Switzerland}
-	{\emph{Tutor} \\
-		\begin{itemize}
-			\item Tutored students in International Baccalaureate Mathematics and Physics
-		\end{itemize}
-	}
-	
-	
+
 \end{sectionlist}
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
-
+\vspace{-2.5\parskip}
 \section{Education}
 
 \begin{sectionlist}
 		
 	%------------------------------------------------
-	\entry
-	{Sep. 2010--Now}
+	\education
+	{Sep. 2010--Apr. 2016}
+	{UNIVERSITY OF WATERLOO}
 	{Honours Bachelor of Computer Science, Psychology Minor}
-	{University of Waterloo}
-	{Anticipated Graduation is April 2016}
+	
 	%------------------------------------------------
 \end{sectionlist}
 
-%----------------------------------------------------------------------------------------
-%	MISCELLANEOUS SECTION
-%----------------------------------------------------------------------------------------
-\section{Miscellaneous}
-
-\begin{sectionlist}
-	\misc
-	{Peer Support Training}
-	{May. 2014}
-	
-	\misc
-	{American Sign Language Basic Training}
-	{Sep. 2011 - Dec. 2011}
-\end{sectionlist}
-
-%----------------------------------------------------------------------------------------
-%	INTERESTS SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Interests}
-\begin{sectionlist}
-	{Musical Theatre, Video Gaming, Traveling}
-\end{sectionlist}
 \end{document}

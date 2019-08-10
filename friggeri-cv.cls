@@ -1,19 +1,22 @@
-\ProvidesClass{friggeri-cv}[2012/04/30 CV class]
-\NeedsTeXFormat{LaTeX2e}
-
-\DeclareOption{print}{\def\@cv@print{}}
-\DeclareOption*{%
-	\PassOptionsToClass{\CurrentOption}{article}%
-}
-\ProcessOptions\relax
+ \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{friggeri-cv}
 \LoadClass{article}
 
+\RequirePackage{xcolor}
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\RequirePackage{tikz}
+\RequirePackage{fontawesome}
+\RequirePackage{parskip}
+\RequirePackage{longtable}
+\RequirePackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2cm,nohead,nofoot]{geometry}
+\RequirePackage{hyperref}
+
+\pagestyle{empty}
 
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
-
-\RequirePackage{xcolor}
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{black}{RGB}{0,0,0}
@@ -28,28 +31,15 @@
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
 
-\ifdefined\@cv@print
-\colorlet{green}{gray}
-\colorlet{orange}{gray}
-\colorlet{purple}{gray}
-\colorlet{brown}{gray}
-\colorlet{red}{gray}
-\colorlet{blue}{gray}
-\colorlet{fillheader}{white}
-\colorlet{header}{gray}
-\else
 \colorlet{fillheader}{gray}
 \colorlet{header}{white}
-\fi
+
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
-
-\RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
 
 \newfontfamily\bodyfont[]{Helvetica Neue}
 \newfontfamily\thinfont[]{Helvetica Neue Light}
@@ -58,33 +48,30 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue Light}
 
-%\setmathfont{XITS Math}
-
 %%%%%%%%%%
 % Header %
 %%%%%%%%%%
 
-\RequirePackage{tikz}
-
-\newcommand{\rolefont}{%
-	\fontsize{14pt}{24pt}\selectfont%
-	\thinfont%
-	\color{white}%
+\newcommand{\rolefont}{
+	\fontsize{14pt}{16pt}\selectfont
+	\thinfont
+	\color{white}
 }
 
-\newcommand{\header}[3]{%
+\newcommand{\header}[5]{
 	\begin{tikzpicture}[remember picture,overlay]
-		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
-		\node [anchor=center] (name) at (box) {%
-			\fontsize{40pt}{72pt}\color{header}%
-			{\thinfont #1}{\bodyfont  #2}
-		};
-		\node [anchor=north] at (name.south) {%
-			\fontsize{14pt}{24pt}\color{header}%
-			\thinfont #3%
+		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2.5cm] (box) at (current page.north){};
+		\node [anchor=center, align=center] (name) at (box) {
+			\fontsize{30pt}{36pt}\color{header}
+			\thinfont #1 \bodyfont #2 
+			\\
+			\fontsize{10pt}{12pt}\color{header}
+			\thinfont \faEnvelopeO  \hspace{0.25em} #3 | 
+			\href{https://github.com/#5}{\faGithubSquare   \hspace{0.25em} #4} | 
+			\href{https://www.linkedin.com/in/#4}{\faLinkedinSquare  \hspace{0.25em} #5}
 		};
 	\end{tikzpicture}
-	\vspace{2cm}
+	\vspace{0.5cm}
 	\vspace{-2\parskip}
 }
 
@@ -92,95 +79,58 @@
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
-\RequirePackage{parskip}
 
 \newcounter{colorCounter}
-\def\@sectioncolor#1#2#3{%
-	{%
-		\color{%
-			\ifcase\value{colorCounter}%
-				blue\or%
-				red\or%
-				orange\or%
-				green\or%
-				purple\or%
-				brown\else%
-				headercolor\fi%
+\def\@sectioncolor#1#2#3{
+	{
+		\color{
+			\ifcase\value{colorCounter}
+				blue\or
+				red\or
+				orange\or
+				green\or
+				purple\or
+				brown\else
+				headercolor\fi
 			} #1#2#3%
 		}%
 		\stepcounter{colorCounter}%
 	}
 	
 \renewcommand{\section}[1]{
-	{%
-		\LARGE\headingfont\color{headercolor}%
-		\@sectioncolor #1%
+	{
+		\large\headingfont\color{headercolor}
+		\@sectioncolor #1
+		\vspace{-1\parskip}
 	}
 }
-
-\pagestyle{empty}
 	
 	
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
-\RequirePackage{longtable}
 
 \setlength{\tabcolsep}{0pt}
-\newenvironment{sectionlist}{%
+\newenvironment{sectionlist}{
 	\setlength\LTright{11.5cm}
-	\begin{longtable}{@{\extracolsep{\fill}}ll}
-		}{% 
+	\begin{longtable}{@{\extracolsep{\fill}}ll}}{
 	\end{longtable}
 }
+
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
-	\parbox[t]{13.8cm}{%
-		\textbf{#2}%
-		\hfill%
-		{\footnotesize\addfontfeature{Color=gray} #1}\\%
-		\textbf{#3}\\%
-		#4\vspace{1.5\parsep}%
+\newcommand{\entry}[4]{
+	\parbox[t]{\textwidth}{
+		\textbf{#2}
+		\hfill
+		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		\textbf{#3}\\
+		#4\vspace{1.5\parsep}
 		}\\}
 	
-\newcommand{\misc}[2]{%
-	\parbox[t]{13.8cm}{%
-		\textbf{#1}%
-		\hfill%
-		{\footnotesize\addfontfeature{Color=gray} #2}%
-		}\\
-}
-%%%%%%%%%%%%%%
-% Side block %
-%%%%%%%%%%%%%%
-
-\RequirePackage[absolute,overlay]{textpos}
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
-\newenvironment{aside}{%
-	\let\oldsection\section
-	\renewcommand{\section}[1]{
-		\par\vspace{\parsep}{\Large\headingfont\color{headercolor} ##1}
-	}
-	\begin{textblock}{4.5}(1.0, 3.85)
-		\begin{flushright}
-			\obeycr
-			}{%
-			\restorecr
-		\end{flushright}
-	\end{textblock}
-	\let\section\oldsection
-}
-
-%%%%%%%%%%%%%%%%
-% Bibliography %
-%%%%%%%%%%%%%%%%
-
-\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
-
-%%%%%%%%%%%%%%%%
-% Other tweaks %
-%%%%%%%%%%%%%%%%
-
-\RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
-\RequirePackage{hyperref}
+\newcommand{\education}[3]{
+	\parbox[t]{\textwidth}{
+		\textbf{#2}
+		\hfill
+		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		#3\\
+	}\\}
