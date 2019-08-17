@@ -1,5 +1,5 @@
  \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{friggeri-cv}
+\ProvidesClass{resume-class}
 \LoadClass{article}
 
 \RequirePackage{xcolor}
