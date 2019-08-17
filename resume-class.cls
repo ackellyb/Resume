@@ -59,7 +59,7 @@
 	\color{white}
 }
 
-\newcommand{\header}[5]{
+\newcommand{\header}[6]{
 	\begin{tikzpicture}[remember picture,overlay]
 		\node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2.5cm] (box) at (current page.north){};
 		\node [anchor=center, align=center] (name) at (box) {
@@ -69,7 +69,8 @@
 			\fontsize{10pt}{12pt}\color{header}
 			\thinfont \faEnvelopeO  \hspace{0.25em} #3 | 
 			\href{https://github.com/#5}{\faGithubSquare   \hspace{0.25em} #4} | 
-			\href{https://www.linkedin.com/in/#4}{\faLinkedinSquare  \hspace{0.25em} #5}
+			\href{https://www.linkedin.com/in/#4}{\faLinkedinSquare  \hspace{0.25em} #5} |
+			\href{https://www.npmjs.com/~#6}{NPM \hspace{0.25em} #6}
 		};
 	\end{tikzpicture}
 	\vspace{0.5cm}
