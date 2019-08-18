@@ -6,11 +6,12 @@
 \RequirePackage{fontspec}
 \RequirePackage{unicode-math}
 \RequirePackage{tikz}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{parskip}
 \RequirePackage{longtable}
 \RequirePackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2cm,nohead,nofoot]{geometry}
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
+
 
 \pagestyle{empty}
 
@@ -67,10 +68,10 @@
 			\thinfont #1 \bodyfont #2 
 			\\
 			\fontsize{10pt}{12pt}\color{header}
-			\thinfont \faEnvelopeO  \hspace{0.25em} #3 | 
-			\href{https://github.com/#5}{\faGithubSquare   \hspace{0.25em} #4} | 
-			\href{https://www.linkedin.com/in/#4}{\faLinkedinSquare  \hspace{0.25em} #5} |
-			\href{https://www.npmjs.com/~#6}{NPM \hspace{0.25em} #6}
+			\thinfont \faEnvelope[regular] \hspace{0.2em} #3 | 
+			\href{https://github.com/#5}{\faGithubSquare   \hspace{0.2em} #4} | 
+			\href{https://www.linkedin.com/in/#4}{\faLinkedin  \hspace{0.2em} #5} |
+			\href{https://www.npmjs.com/~#6}{\faNpm \hspace{0.2em} #6}
 		};
 	\end{tikzpicture}
 	\vspace{0.5cm}
