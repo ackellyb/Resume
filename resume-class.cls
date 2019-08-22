@@ -121,19 +121,20 @@
 }
 
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{
+\newcommand{\entry}[5]{
 	\parbox[t]{\textwidth}{
 		\textbf{#2}
 		\hfill
-		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		{\footnotesize\addfontfeature{Color=gray} \faCalendar*[regular] \hspace{0.2em} #1}\\
 		\textbf{#3}\\
-		#4\vspace{1.5\parsep}
+		\emph{#4} \\
+		#5\vspace{1.5\parsep}
 		}\\}
 	
 \newcommand{\education}[3]{
 	\parbox[t]{\textwidth}{
 		\textbf{#2}
 		\hfill
-		{\footnotesize\addfontfeature{Color=gray} #1}\\
+		{\footnotesize\addfontfeature{Color=gray} \faCalendar*[regular] \hspace{0.2em} #1}\\
 		#3\\
 	}\\}
